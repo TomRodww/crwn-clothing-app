@@ -13,16 +13,14 @@ const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {  email, password, } = formFields;
 
-    console.log(formFields);
-
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
 
     }
 
     const signInWithGoogle = async () => {
-        const {user} = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
+        await signInWithGooglePopup();
+        
         //console.log(user);
     };
 
@@ -31,9 +29,7 @@ const SignInForm = () => {
         event.preventDefault();
 
         try {
-            const response = await signInAuthUserWithEmailAndPassword(email, password);
-            console.log(response);
-
+            const {user} = await signInAuthUserWithEmailAndPassword(email, password);
             resetFormFields();
             
         } catch(error) {
@@ -45,9 +41,9 @@ const SignInForm = () => {
                     alert('incorrent password');
                     break;
                     default:
-                        console.log(error);
+                        //console.log(error);
             }
-            console.log(error);
+            //console.log(error);
 
         }
 
