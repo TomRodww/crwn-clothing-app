@@ -3,11 +3,12 @@ import FormInput from "../form-input/form-input.component";
 import { signInWithGooglePopup, createUserDocumentFromAuth,signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import './sign-in-form.styles.scss'
 import Button from "../button/button.component";
+import { BUTTON_TYPE_CLASSES } from "../button/button.component"; 
 
 const defaultFormFields = {
     email: '', 
     password: '', 
-}
+};
 
 const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
@@ -87,7 +88,13 @@ const SignInForm = () => {
 
                     <Button type='submit' > Sign In </Button>
 
-                    <Button type='button' ButtonType='google' onClick={signInWithGoogle} > Google Sign In </Button>
+                    <Button 
+                    ButtonType={BUTTON_TYPE_CLASSES.google} 
+                    type='button' 
+                    onClick={signInWithGoogle} 
+                    > 
+                    Google Sign In 
+                    </Button>
 
                 </div>
 
